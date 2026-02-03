@@ -12,7 +12,9 @@
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 32px;
-    transition: all 0.3 ease; 
+    transition: all 0.3 ease;
+    animation: reveal 0.8 ease forwards; 
+    opacity: 0;
 }
 
 .item:hover {
@@ -22,18 +24,140 @@
 
 .hero{
     grid-column: span 3;
+    animation-delay: 0.1s;
+}
+
+.hero h1{
+    font-size: 3.5rem;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.hero p{
+    color: var(--accent);
+    text-shadow: 0 0 15px var(--accent)
+}
+
+.dot {
+    color: var(--accent);
+    text-shadow: 0 0 15px var(--accent);
 }
 
 .social {
     grid-column: span 1;
+    animation-delay: 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social h2 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3 ease;
+}
+
+.contact-item:hover{
+    background: rgba(255,255,255,0.08);
+    color: var(--tex-main);
+    border-color: var(--tex-sub);
+}
+.contact-item.highlight{
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+}
+
+.contact-item.contact-item.highlight:hover{
+    filter: brightness(1.2);
 }
 
 .tech {
     grid-column: span 1;
+    animation-delay: 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 15px ;
+}
+
+.tech h2 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tags span {
+    background: rgba(124, 58, 237, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.tags span:hover{
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 .project-featured {
     grid-column: span 3;
+    animation-delay: 0.4s;
+}
+
+.project-featured:hover{
+    transform: translateY(-8px);
+    border-color: var(--accent
+    );
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+}
+
+.project-link:hover{
+    transform: translate(4px, -4px);
+    color: var(--accent);
+}
+
+.item, .project-link svg {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32,1.275);
+}
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 768px) {
@@ -42,5 +166,20 @@
     }
     .hero, .social, .tech, .project-featured{
         grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px){
+    .bento-grid{
+        grid-template-areas: 
+            "hero"
+            "tech"
+            "project-featured"
+            "social";
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+    .hero h1{
+        font-size: 2.5rem;
     }
 }
